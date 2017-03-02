@@ -21,6 +21,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather PWA</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles/inline.css">
 
   <!-- TODO add manifest here -->
@@ -43,6 +44,7 @@
 
   <main class="main">
     <div class="card cardTemplate weather-forecast" hidden>
+      <div class="close-button"><i class="fa fa-times" aria-hidden="true"></i></div>
       <div class="city-key" hidden></div>
       <div class="card-last-updated" hidden></div>
       <div class="location"></div>
@@ -171,6 +173,10 @@
   </div>
 
   <!-- Uncomment the line below when ready to test with fake data -->
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
   <script src="scripts/app.js" async></script>
 
 </body>

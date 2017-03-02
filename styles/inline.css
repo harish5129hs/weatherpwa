@@ -17,6 +17,12 @@
 * {
   box-sizing: border-box; }
 
+.close-button{
+  text-align: right;
+  color: red;
+  float: right;
+  cursor: pointer;
+}
 html, body {
   padding: 0;
   margin: 0;

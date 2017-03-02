@@ -1,5 +1,5 @@
-var cacheName = 'weatherPWA-step-6-v9';
-var dataCacheName='weatherData-v34';
+var cacheName = 'weatherPWA-step-6-v10';
+var dataCacheName='weatherData-v345';
 
 var filesToCache = [
   '/',
@@ -18,7 +18,9 @@ var filesToCache = [
   '/images/sleet.png',
   '/images/snow.png',
   '/images/thunderstorm.png',
-  '/images/wind.png'
+  '/images/wind.png',
+  'https://code.jquery.com/jquery-2.2.4.min.js',
+  'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 ];
 
 self.addEventListener('install', function(e) {

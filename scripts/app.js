@@ -96,10 +96,11 @@
     var wind = data.channel.wind;
 
     var card = app.visibleCards[data.key];
-    if (!card) {
+    if (!card) { //checks if city is not already added
       card = app.cardTemplate.cloneNode(true);
       card.classList.remove('cardTemplate');
       card.querySelector('.location').textContent = data.label;
+      card.querySelector('.city-key').textContent = data.key;
       card.removeAttribute('hidden');
       app.container.appendChild(card);
       app.visibleCards[data.key] = card;
@@ -207,7 +208,7 @@
         }
       } else {
         // Return the initial weather forecast since no data is available.
-        app.updateForecastCard(initialWeatherForecast);
+        //app.updateForecastCard(initialWeatherForecast);
       }
     };
     request.open('GET', url);
@@ -226,7 +227,29 @@
   app.saveSelectedCities = function() {
     var selectedCities = JSON.stringify(app.selectedCities);
     localStorage.selectedCities = selectedCities;
-  };  
+  }; 
+
+
+  //function to delete city from list
+  app.removeCityFromSelectedList = function(key){
+    //remove city from seleceted-city array
+    var index =-1 ,city;
+    for(var i=0;i<app.selectedCities.length;i++){
+      city = app.selectedCities[i];
+      if(city.key==key){
+        index=i;
+      }
+    }
+    if(index!=-1){
+      app.selectedCities.splice(index,1);
+      app.saveSelectedCities();
+    }
+
+    //remove from visible-cards list
+    delete app.visibleCards[key];
+
+  }
+
   app.getIconClass = function(weatherCode) {
     // Weather codes: https://developer.yahoo.com/weather/documentation.html#codes
     weatherCode = parseInt(weatherCode);
@@ -372,4 +395,19 @@
            .register('./service-worker.js')
            .then(function() { console.log('Service Worker Registered'); });
   }
+
+
+  //jquery faltu logic , couldn't figure out easier way
+  $(document).ready(function(){
+    $('body').on('click','.close-button',function(){
+      var key,parent;
+      parent= this.parentElement;
+      console.log(parent);
+      key = parent.querySelector('.city-key').textContent;
+      app.removeCityFromSelectedList(key);
+      $(parent).remove();
+
+    })
+  });
+
 })();
